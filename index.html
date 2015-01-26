@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Big 3 Podcast Randomizer – Made by Jack Bowen and Shannon Dunn</title>
+
+<style>
+html {
+	background: url(bg1.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+html, body {
+    font-family: 'bebas_neueregular';
+    src: url('bebasneue-webfont-webfont.eot');
+    src: url('bebasneue-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('bebasneue-webfont-webfont.woff2') format('woff2'),
+         url('bebasneue-webfont-webfont.woff') format('woff'),
+         url('bebasneue-webfont-webfont.ttf') format('truetype'),
+         url('bebasneue-webfont-webfont.svg#bebas_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+	margin:0px;
+	padding:0px;
+	border:0px;
+	color:#ffffff;
+	text-align:center;
+	overflow:hidden;
+}
+#overlay {
+	background:rgba(252,60,64,0.7);
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+}
+#main_content {
+	margin:6%;
+}
+#title {
+	font-size:70pt;
+	letter-spacing:4px;
+}
+#date {
+	font-size:44pt;
+	letter-spacing:4px;
+}
+#category {
+	font-size:26pt;
+	letter-spacing:2px;
+}
+#time {
+	font-size:90pt;
+	margin-top:6%;
+}
+button {
+	border:2px solid #ffffff;
+	border-radius:100px;
+	width:98px;
+	height:98px;
+	background:rgba(255,255,255,.0);
+	color:#ffffff;
+	font-weight:bolder;
+}
+button:hover {
+	cursor:pointer;
+	background:#ffffff;
+	color:#fc3c40;
+}
+#controls {
+	margin-top:2%;
+}
+#btnPause {
+	margin:0px 20px;
+}
+btnPause:hover {
+	background:pauseHover.png;
+}
+/***** seek bar *****/
+input[type=range] {
+	width:100%;
+	-webkit-appearance:none;
+}
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance:none;
+}
+input[type=range]:focus {
+	outline:none;
+}
+input[type=range]::-ms-track {
+	width:100%;
+	cursor:pointer;
+	background:transparent;
+	border-color:transparent;
+	color:transparent;
+}
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance:none;
+	height:30px;
+	width:30px;
+	border-radius:30px;
+	background:#ffffff;
+	cursor:pointer;
+	margin-top:-14px;
+}
+input[type=range]::-moz-range-thumb {
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	border: 1px solid #000000;
+	height:36px;
+	width:16px;
+	border-radius:3px;
+	background:#ffffff;
+	cursor:pointer;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 10px;
+  width: 4px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+height: 2px;
+cursor: pointer;
+/* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
+/* background: #3071a9; */
+border-radius: 1px;
+border: 0.2px solid #010101;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #367ebd;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+@media screen and (max-width: 1450px) {
+	#title {
+		font-size:50pt;
+	}
+	#date {
+		font-size:35pt;
+	}
+	#time {
+		margin-top:5%;
+		font-size:70pt;
+	}
+	#controls {
+		margin-top:2%;
+	}
+	button {
+		width:70px;
+		height:70px;
+	}
+}
+@media screen and (max-width: 615px) {
+	#title {
+		font-size:30pt;
+	}
+	#date {
+		font-size:20pt;
+	}
+	#time {
+		margin-top:5%;
+		font-size:50pt;
+	}
+	#category {
+		font-size:20pt;
+	}
+	#controls {
+		margin-top:2%;
+	}
+	button {
+		width:70px;
+		height:70px;
+	}
+}
+
+</style>
+<link href="font/font.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="overlay">
+	<div id="main_content">
+        <div id="title">Perry Loses in Court</div>
+        <div id="date"> January 13th, 2012</div>
+        <div id="category">Simply Don the Podcast Network</div>
+    </div>
+    <input id="sliderTime" type="range" min="0" value="0" />
+	<div id="time">0:13:28</div>
+    <div id="controls">
+    	<button id="btnPlay"><div id="playIcon">PLAY</div></button>
+    	<button id="btnPause"><div id="pauseIcon">PAUSE</div></button>
+    	<button id="btnNext"><div id="nextIcon">NEXT</div></button>
+    </div>
+
+</div>
+</body>
+</html>
